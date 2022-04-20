@@ -15,7 +15,9 @@ Thầy: Trần Trung Kiên - Nguyễn Thái Vũ
 Đồ án hướng đến việc ứng dụng của segmentation trong xử lý ảnh để tách nền các object dựa trên các Super Pixel.
 ### THÔNG TIN ĐỒ ÁN
 - Báo cáo: <a href="https://colab.research.google.com/github/kimdinhloc/Applied_Parallel_Programming_HK2_2021_2022/blob/main/Report.ipynb">Colab</a>
-- Tài liệu tham khảo: <a href="https://drive.google.com/drive/folders/1gjfWWeSdgjei1dVaIRH1wYsrM-IdtyVQ?usp=sharing">Google Drive</a>
+- Tài liệu tham khảo: 
+  - <a href="https://drive.google.com/drive/folders/1gjfWWeSdgjei1dVaIRH1wYsrM-IdtyVQ?usp=sharing">Google Drive</a>
+  - Paper: [Link](https://nghiadt05.github.io/publications/DOAN_ICCE-Asia16.pdf)
 ### KẾ HOẠCH THỰC HIỆN
 
 <table>
