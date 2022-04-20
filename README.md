@@ -1,63 +1,56 @@
-## LẬP TRÌNH SONG SONG ỨNG DỤNG - HK2/21-22 - FIT- HCMUS
-### REMOVE BACKGROUND USING SUPER PIXEL
-### GIẢNG VIÊN HƯỚNG DẪN
-Thầy: Trần Trung Kiên - Nguyễn Thái Vũ
+# Remove background by U2-Net
 
-### THÀNH VIÊN
+Demonstration using Google Colab to show how U-2-NET can be used for Background Removal, Changing Backgrounds, Bounding Box Creation, Salient Feature Highlighting and Salient Object Cropping
 
-| MSSV | Họ tên | Tài khoản Github |
-| --- | --- | --- |
-| 1712568 | KIM ĐÌNH LỘC | [kimdinhloc](https://github.com/kimdinhloc) |
-| 1712787 | NGUYỄN VĂN THÌN | [thinnguyenqb](https://github.com/thinnguyenqb) |
-| 1712898 | TRẦN VIỆT VĂN | [tranvietvan](https://github.com/tranvietvan) |
 
-### MỤC TIÊU ĐỒ ÁN
-Đồ án hướng đến việc ứng dụng của segmentation trong xử lý ảnh để tách nền các object dựa trên các Super Pixel.
-### THÔNG TIN ĐỒ ÁN
-- Báo cáo: <a href="https://colab.research.google.com/github/kimdinhloc/Applied_Parallel_Programming_HK2_2021_2022/blob/main/Report.ipynb">Colab</a>
-- Tài liệu tham khảo: <a href="https://drive.google.com/drive/folders/1gjfWWeSdgjei1dVaIRH1wYsrM-IdtyVQ?usp=sharing">Google Drive</a>
-### KẾ HOẠCH THỰC HIỆN
+# Link: [Open Google Colab Notebook](https://drive.google.com/file/d/1eXDH45-nAmXhClgOb-nauWCrdX8bEJFE/view?usp=sharing)
 
-<table>
-<thead>
-  <tr>
-    <th>Tuần</th>
-    <th>Thời gian</th>
-    <th>Lộc</th>
-    <th>Thìn</th>
-    <th>Văn</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td rowspan="2">1</td>
-    <td>24/03-29/03</td>
-    <td colspan="3">Mỗi người tìm hiểu và đưa ra một đề xuất đề tài cho đồ án cuối kỳ</td>
-  </tr>
-  <tr>
-    <td>30/04</td>
-    <td colspan="3">Họp nhóm và thống nhất đề tài</td>
-  </tr>
-  <tr>
-    <td rowspan="2">2</td>
-    <td> 31/03-05/04</td>
-    <td colspan="3"></td>
-  </tr>
-  <tr>
-    <td>06/04</td>
-    <td colspan="3">Chuản bị báo cáo lần 1</td>
-  </tr>
-  
-  <tr>
-    <td rowspan="2">3</td>
-    <td>07/04-13/04</td>
-    <td colspan="3"></tr>
-  </tr>
-  <tr>
-    <td>14/04</td>
-    <td colspan="3"></td>
-  </tr>
- 
-  
-</tbody>
-</table>
+# Example Results
+
+Cat:
+![](assets/U_2_NETP_Results1.jpg)
+
+Formula 1 Car:
+![](assets/U_2_NETP_Results2.jpg)
+
+Rick Astley:
+![](assets/U_2_NETP_Results3.jpg)
+
+
+# Useful material
+
+**U-2-NET Paper:** [U2-Net: Going Deeper with Nested U-Structure for Salient Object Detection](https://arxiv.org/abs/2005.09007)
+
+**Original Repo:** [U-2-Net Github repo](https://github.com/NathanUA/U-2-Net)
+
+**Modified repo for that this colab uses:** [Modified fork](https://github.com/shreyas-bk/U-2-Net)
+
+**References:** X. Qin, Z. Zhang, C. Huang, M. Dehghan, O. R. Zaiane, and M. Jagersand, “U2-net: Going deeper with nested u-structure for salient object
+detection,” Pattern Recognition, vol. 106, p. 107404, 2020
+
+# Other Results
+
+![](assets/u2netexamples.png)
+
+
+# Details about U-2-Net
+The following is an excerpt from the paper:
+*'In this paper, we design a simple yet powerful deep network architecture, U2-Net, for salient object detection (SOD). The architecture of our U2-Net is a two-level nested U-structure. The design has the following advantages: (1) it is able to capture more contextual information from different scales thanks to the mixture of receptive fields of different sizes in our proposed ReSidual U-blocks (RSU), (2) it increases the depth of the whole architecture without significantly increasing the computational cost because of the pooling operations used in these RSU blocks. This architecture enables us to train a deep network from scratch without using backbones from image classification tasks. We instantiate two models of the proposed architecture, U2-Net (176.3 MB, 30 FPS on GTX 1080Ti GPU) and U2-Net† (4.7 MB, 40 FPS), to facilitate the usage in different environments. Both models achieve competitive performance on six SOD datasets.'*
+
+# U2NET Model
+
+![](assets/U2NETPRmodel.png)
+
+TODO:
+- remove dependancy to secondary repo
+- algorithmic post processing
+- flask demo
+- multiproc cpu code
+- benchmarks
+- video background removal
+- change backgrounds for main notebook
+- support .jpeg images
+- upload python code for webcam support
+- add demo for portrait feature of U-2-Net
+- add license to nbs
+- maybe make a webpage for bounding box creation over large datasets
