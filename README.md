@@ -106,15 +106,25 @@ Thầy: Trần Trung Kiên - Nguyễn Thái Vũ
     <td>Thìn Nguyễn</td>
   </tr>
 
+   
    <tr>
-    <td>5</td>
-    <td>21/04/2022</td>
-    <td>27/04/2022</td>
-    <td>...</td>
-    <td>...</td>
-    <td></td>
-   </tr>
-   <tr>
+   <td rowspan="2">5</td>
+    <td rowspan="2">21/04/2022</td>
+    <td rowspan="2">12/05/2022</td>
+    <td>
+    - Tìm hiểu viết kernel bằng Numba
+    </br>
+    - Viết code ở host
+   </td>
+    <td>Cả nhóm</td>
+  </tr>
+
+  <tr>
+    <td>
+    - Chỉnh sửa mô hình.
+   </td>
+    <td>Đình Lộc</td>
+  </tr>
    
 </tbody>
 </table>
