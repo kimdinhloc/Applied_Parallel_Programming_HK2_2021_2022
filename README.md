@@ -52,7 +52,6 @@ Thầy: Trần Trung Kiên - Nguyễn Thái Vũ
     - Mỗi thành viên tự cài đặt thuật toán tuần tự để lựa chọn mô hình thích hợp.
     </td>
     <td>Cả nhóm</td>
-   <td></td>
   </tr>
 
   <tr>
@@ -60,14 +59,12 @@ Thầy: Trần Trung Kiên - Nguyễn Thái Vũ
     - Soạn báo cáo, viết notebook.
     </td>
     <td>Thìn Nguyễn</td>
-   <td></td>
   </tr>
   <tr>
     <td> 
     - Báo cáo lần 1.
     </td>
     <td>Đình Lộc</td>
-   <td></td>
   </tr>
 
    <tr>
@@ -76,7 +73,6 @@ Thầy: Trần Trung Kiên - Nguyễn Thái Vũ
     <td>14/04/2022</td>
     <td>- Xây dựng mô hình và các bước để Remove background</td>
     <td>Cả nhóm</td>
-    <td></td>
    </tr>
    <tr>
    <td rowspan="3">4</td>
@@ -108,7 +104,7 @@ Thầy: Trần Trung Kiên - Nguyễn Thái Vũ
 
    
    <tr>
-   <td rowspan="2">5</td>
+   <td rowspan="2">5,6</td>
     <td rowspan="2">21/04/2022</td>
     <td rowspan="2">12/05/2022</td>
     <td>
@@ -125,6 +121,32 @@ Thầy: Trần Trung Kiên - Nguyễn Thái Vũ
    </td>
     <td>Đình Lộc</td>
   </tr>
+  
+   <tr>
+   <td rowspan="1">7</td>
+    <td rowspan="1">13/05/2022</td>
+    <td rowspan="1">18/05/2022</td>
+    <td>
+     - Fix bug ở host
+    </br>
+    - Tìm hiểu chi tiết về Memory management trong numba
+   </td>
+    <td>Cả nhóm</td>
+  </tr>
+
+   <tr>
+   <td rowspan="1">8</td>
+    <td rowspan="1">18/05/2022</td>
+    <td rowspan="1">21/05/2022</td>
+    <td>
+    - Viết kernel
+    </br>
+    - Song song hoá lần 1
+   </td>
+    <td>Cả nhóm</td>
+  </tr>
+ 
+
    
 </tbody>
 </table>
