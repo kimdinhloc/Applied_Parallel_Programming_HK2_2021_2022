@@ -1,5 +1,6 @@
 ## LẬP TRÌNH SONG SONG ỨNG DỤNG - HK2/21-22 - FIT- HCMUS
-### REMOVE BACKGROUND USING SUPER PIXEL
+### BACKGROUND REMOVAL WITH GRABCUT AND SUPERPIXELS
+
 ### GIẢNG VIÊN HƯỚNG DẪN
 Thầy: Trần Trung Kiên - Nguyễn Thái Vũ
 
@@ -17,7 +18,6 @@ Thầy: Trần Trung Kiên - Nguyễn Thái Vũ
 - Báo cáo: <a href="https://colab.research.google.com/github/kimdinhloc/Applied_Parallel_Programming_HK2_2021_2022/blob/main/Report.ipynb">Colab</a>
 - Tài liệu tham khảo: 
   - <a href="https://drive.google.com/drive/folders/1gjfWWeSdgjei1dVaIRH1wYsrM-IdtyVQ?usp=sharing">Google Drive</a>
-  - Paper: [Link](https://nghiadt05.github.io/publications/DOAN_ICCE-Asia16.pdf)
 ### KẾ HOẠCH THỰC HIỆN
 
 <table>
