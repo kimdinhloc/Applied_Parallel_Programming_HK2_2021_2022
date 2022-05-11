@@ -268,3 +268,190 @@ def create_connectivity(inImg,centers,clusters):
             label+=1
     SLIC_new_clusters = new_clusters
     return SLIC_new_clusters
+
+def SLIC(srcImage,segmentSize,m=20,enforce_connectivity=False):
+    '''
+    SIMPLE LINEAR IMAGE SEGMENTATION
+
+    params:
+    ----------
+    srcImage - image to be segmented
+    segmentSize - size of segments
+    m = parameter for SLIC
+    enforce_connectivity - if True, enforce connectivity
+
+    return:
+    ----------
+    labels - segmented image
+    '''
+    # initialize SLIC
+    Image = srcImage.copy()
+    S=segmentSize
+    width=Image.shape[1]
+    height=Image.shape[0]
+    interations=10
+
+    # convert image to CieLAB
+    labImage=convert2CIELAB(Image)
+    
+    # initialize distance
+    distances = 1 * np.ones(labImage.shape[:2])
+
+    # initialize cluster
+    clusters = -1 * distances
+
+    # initialize cluster centers counter
+    center_counts = np.zeros(len(calculate_centers(labImage,S)))
+
+    # initialize cluster centers
+    centers = np.array(calculate_centers(labImage,S))
+
+    # generate superpixels
+    centers,distances,clusters=generate_pixels(labImage,interations,distances,centers,clusters,S,m)
+
+    if enforce_connectivity:
+        new_cluster=create_connectivity(labImage,centers,clusters)
+        centers=calculate_centers(labImage,S)
+    else:
+        new_cluster=clusters
+    return new_cluster
+
+def create_segmentation_mask(label,segmented,seg_mask,outline):
+    '''
+    Create segmentation mask
+    Parameters:
+    ----
+    label: label of segment
+    segmented: segmented image
+    seg_mask: segmentation mask
+    outline: outline of segment
+
+    return 
+    seg_mask: segmentation mask
+    '''
+    for index in range(0, len(label)):
+        if label[index] == 0:
+            temp = outline == segmented[index]
+            seg_mask = seg_mask + temp
+    return seg_mask
+
+def meger_mask(srcImage,seg_mask):
+    '''
+    Merge mask with original image
+    Parameters:
+    ----
+    srcImage: Original image
+    seg_mask: Segmentation mask
+    '''
+    outImage = srcImage.copy()
+    height, width = srcImage.shape[:2]
+    for x in range(0, width):
+        for y in range(0, height):
+            if seg_mask[y, x] == 0:
+                outImage[y, x] = [0, 0, 0]
+    return outImage
+
+def remove_background(srcImage,segmentSize,m=20,enforce_connectivity=False,threshold=0.25,graussianKernel=5):
+    '''
+    Removing background - Xoá background
+    Parameters:
+    ----
+    filename: Đường dẫn chứa hình ảnh đầu vào
+    segmentSize: Kích thước của mỗi segment
+    m: Parameter for SLIC
+    enforce_connectivity: If True, enforce connectivity
+    threshold: Threshold for removing background
+  
+    '''
+    Image=np.zeros(srcImage.shape)
+    #Load image
+    Image=srcImage.copy()
+    Width, Height = Image.shape[1], Image.shape[0]
+
+    #load model
+    outs= load_model(Image)
+
+    #Box of Object
+    boxes = postprocess(Height, Width, outs)
+    if len(boxes):
+      [left, top, width, height] = boxes[0]
+    else:
+      [left, top, width, height] = [0, Height, Width, Height]
+
+    #Superpixels segmentation using SLIC
+    outline=SLIC(Image, segmentSize,m=20,enforce_connectivity=True)
+
+    #Grab Cut
+    mask = np.zeros(Image.shape[:2], np.uint8)
+    bgdModel = np.zeros((1, 65), np.float64)
+    fgdModel = np.zeros((1, 65), np.float64)
+    rect = [left, top, left + width, top + height]
+    cv2.grabCut(Image, mask, rect, bgdModel, fgdModel, 1, cv2.GC_INIT_WITH_RECT)
+    cv2.grabCut(Image, mask, rect, bgdModel, fgdModel, 5, cv2.GC_INIT_WITH_MASK)
+
+    grabMask = np.where((mask == 2) | (mask == 0), 0, 1).astype('uint8')
+    segmented = np.unique(grabMask * outline)
+    segmented = segmented[1 : len(segmented)]
+    pxtotal = np.bincount(outline.flatten())
+    pxseg = np.bincount((grabMask * outline).flatten())
+    seg_mask = np.zeros(Image.shape[:2], np.uint8)
+    label = (pxseg[segmented] / pxtotal[segmented].astype(float)) < threshold
+    seg_mask=create_segmentation_mask(label,segmented,seg_mask,outline)
+    
+    #Graussian Blur
+    seg_mask = cv2.GaussianBlur(seg_mask, (graussianKernel, graussianKernel), 0)
+    
+    # Meger segmentation mask with original image
+    
+    outImg=meger_mask(Image,seg_mask)
+    return outImg
+
+def main():
+    '''
+    args:
+    ----
+    filename: file name of image
+    segmentSize: size of segment
+    m: Parameter for SLIC
+    enforce_connectivity: If True, enforce connectivity
+    threshold: Threshold for removing background
+
+    example:
+    ----
+    python remove_background.py filename segmentSize m enforce_connectivity threshold
+    > python remove_background.py test.jpg 200 20 True 0.25
+
+    OR USING RECOMMENDED PARAMETERS
+    python remove_background.py filename
+    > python remove_background.py test.jpg
+    '''
+    parser = sys.argv
+    if len(parser) != 7 and len(parser) != 2:
+        print("Please input image path")
+        return
+    elif len(parser) == 7:
+        filename = parser[1]
+        segmentSize = int(parser[2])
+        m = int(parser[3])
+        enforce_connectivity = bool(parser[4])
+        threshold = float(parser[5])
+        graussianKernel = int(parser[6])
+        srcImage = cv2.imread(filename)
+        outImg = remove_background(srcImage,segmentSize,m,enforce_connectivity,threshold,graussianKernel)
+        cv2.imwrite(str(filename)+"_output.jpg", outImg)
+    elif len(parser) == 2:
+        filename = parser[1]
+        srcImage = cv2.imread(filename)
+        segmentSize=5
+        # if square image >10000000, segmentSize increase 2.5 each 1 milion more than 1 million
+        if srcImage.shape[0]*srcImage.shape[1]>10000000:
+            segmentSize=int(segmentSize+2.5*(srcImage.shape[0]*srcImage.shape[1]-1000000)//1000000)
+        m=20
+        enforce_connectivity=False
+        threshold=0.25
+        graussianKernel=segmentSize
+        outImg = remove_background(srcImage,segmentSize,m,enforce_connectivity,threshold,graussianKernel)
+        cv2.imwrite(str(filename)+"_output.jpg", outImg)
+
+if __name__ == '__main__':
+    main()
