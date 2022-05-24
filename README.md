@@ -145,8 +145,18 @@ Thầy: Trần Trung Kiên - Nguyễn Thái Vũ
    </td>
     <td>Cả nhóm</td>
   </tr>
- 
+   <tr>
+    <td rowspan="1">9,10</td>
+        <td rowspan="1">23/05/2022</td>
+        <td rowspan="1">06/06/2022</td>
+        <td>
+        - Hoàn thiện các hàm jit trong SLIC
+        </br>
+        - Song song hoá các hàm trong SLIC
+        </br>
+        - Chuẩn bị, viết report cho buổi vấn đáp
+       </td>
+        <td>Cả nhóm</td>
 
-   
-</tbody>
+    </tbody>
 </table>
