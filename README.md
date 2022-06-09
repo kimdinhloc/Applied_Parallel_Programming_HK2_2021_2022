@@ -157,6 +157,6 @@ Thầy: Trần Trung Kiên - Nguyễn Thái Vũ
         - Chuẩn bị, viết report cho buổi vấn đáp
        </td>
         <td>Cả nhóm</td>
-
+ </tr>
     </tbody>
 </table>
