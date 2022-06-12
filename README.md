@@ -146,17 +146,46 @@ Thầy: Trần Trung Kiên - Nguyễn Thái Vũ
     <td>Cả nhóm</td>
   </tr>
    <tr>
-    <td rowspan="1">9,10</td>
+    <td rowspan="1">9</td>
         <td rowspan="1">23/05/2022</td>
-        <td rowspan="1">06/06/2022</td>
+        <td rowspan="1">31/05/2022</td>
         <td>
         - Hoàn thiện các hàm jit trong SLIC
-        </br>
+       </td>
+        <td>Cả nhóm</td>
+ </tr>
+    <tr>
+    <td rowspan="1">10</td>
+        <td rowspan="1">01/06/2022</td>
+        <td rowspan="1">06/06/2022</td>
+        <td>
         - Song song hoá các hàm trong SLIC
         </br>
         - Chuẩn bị, viết report cho buổi vấn đáp
        </td>
         <td>Cả nhóm</td>
  </tr>
-    </tbody>
+    <tr>
+    <td rowspan="1">11</td>
+        <td rowspan="1">07/06/2022</td>
+        <td rowspan="1">16/06/2022</td>
+        <td>
+        - Hoàn thành parallel version 2
+        </br>
+        - Viết report.
+       </td>
+        <td>Cả nhóm</td>
+ </tr>
+  </tr>
+    <tr>
+    <td rowspan="1">12</td>
+        <td rowspan="1">17/06/2022</td>
+        <td rowspan="1">23/06/2022</td>
+        <td>
+        - So sánh, đánh giá @jit và @cuda ở từng bước hướng đến parallel việc parallel version 3 với các bước có thời gian chạy nhanh nhất.
+        </br>
+        - Hoàn thiện report trước ngày 20/06/2022
+       </td>
+        <td>Cả nhóm</td>
+ </tr>
 </table>
