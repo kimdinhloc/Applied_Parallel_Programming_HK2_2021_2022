@@ -13,7 +13,11 @@ Thầy: Trần Trung Kiên - Nguyễn Thái Vũ
 | 1712898 | TRẦN VIỆT VĂN | [tranvietvan](https://github.com/tranvietvan) |
 
 ### MỤC TIÊU ĐỒ ÁN
-Đồ án hướng đến việc ứng dụng của segmentation trong xử lý ảnh để tách nền các object dựa trên các Super Pixel.
+Đồ án hướng đến việc ứng dụng của segmentation trong xử lý ảnh để tách nền các object dựa trên Grabcut và Superpixels.
+  - Hỗ trợ tách/lọc nền trong việc chỉnh sửa ảnh.
+  - Nghiên cứu về segmentation việc xoá background.
+  - Giảm độ phức tạp của các bước xử lý ảnh của vấn đề mở rộng bài toán của mô hình này.
+  
 ### THÔNG TIN ĐỒ ÁN
 - Báo cáo: <a href="https://colab.research.google.com/github/kimdinhloc/Applied_Parallel_Programming_HK2_2021_2022/blob/main/Report.ipynb">Colab</a>
 - Tài liệu tham khảo: 
@@ -166,25 +170,17 @@ Thầy: Trần Trung Kiên - Nguyễn Thái Vũ
         <td>Cả nhóm</td>
  </tr>
     <tr>
-    <td rowspan="1">11</td>
+    <td rowspan="1"> </td>
         <td rowspan="1">07/06/2022</td>
-        <td rowspan="1">16/06/2022</td>
+        <td rowspan="1">29/06/2022</td>
         <td>
         - Hoàn thành parallel version 2
         </br>
         - Viết report.
-       </td>
-        <td>Cả nhóm</td>
- </tr>
-  </tr>
-    <tr>
-    <td rowspan="1">12</td>
-        <td rowspan="1">17/06/2022</td>
-        <td rowspan="1">23/06/2022</td>
-        <td>
-        - So sánh, đánh giá @jit và @cuda ở từng bước hướng đến parallel việc parallel version 3 với các bước có thời gian chạy nhanh nhất.
         </br>
-        - Hoàn thiện report trước ngày 20/06/2022
+        - So sánh, đánh giá @jit và @cuda ở từng bước.
+        </br>
+        - Hoàn thiện report cho ngày báo cáo 30/06/2022
        </td>
         <td>Cả nhóm</td>
  </tr>

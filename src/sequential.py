@@ -426,16 +426,16 @@ def main():
     > python remove_background.py test.jpg
     '''
     parser = sys.argv
-    if len(parser) != 7 and len(parser) != 2:
+    if len(parser) != 6 and len(parser) != 2:
         print("Please input image path")
         return
-    elif len(parser) == 7:
+    elif len(parser) == 6:
         filename = parser[1]
         segmentSize = int(parser[2])
         m = int(parser[3])
         enforce_connectivity = bool(parser[4])
         threshold = float(parser[5])
-        graussianKernel = int(parser[6])
+        graussianKernel = segmentSize
         srcImage = cv2.imread(filename)
         outImg = remove_background(srcImage,segmentSize,m,enforce_connectivity,threshold,graussianKernel)
         cv2.imwrite(str(filename)+"_output.jpg", outImg)
